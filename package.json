@@ -1,5 +1,6 @@
 {
   "name": "allahc.c.db",
+  "description": "Allah'ın izni peygamberin kabri ile yaptığımız database.",
   "version": "6.4.4",
   "main": "./src/index.mjs",
   "module": "./src/index.mjs",
