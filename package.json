@@ -1,6 +1,6 @@
 {
   "name": "allahc.c.db",
-  "version": "6.3.3",
+  "version": "6.3.4",
   "main": "./src/index.mjs",
   "module": "./src/index.mjs",
   "license": "MIT",
