@@ -1,6 +1,6 @@
 {
   "name": "allahc.c.db",
-  "version": "6.3.5",
+  "version": "6.4.4",
   "main": "./src/index.mjs",
   "module": "./src/index.mjs",
   "license": "MIT",
@@ -10,6 +10,7 @@
     "lodash": "^4.17.21"
   },
   "repository": {
-    "url": "+githttps://github.com/Okeanos-0/allah.db.git"
+    "type": "git",
+    "url": "git+https://github.com/Okeanos-0/allah.db.git"
   }
 }
