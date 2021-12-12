@@ -1,0 +1,11 @@
+{
+  "name": "allah.db",
+  "version": "5.7.1",
+  "main": "src/index.mjs",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "consola": "^2.15.3",
+    "lodash": "^4.17.21"
+  }
+}
