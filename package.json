@@ -1,5 +1,5 @@
 {
-  "name": "allah-db",
+  "name": "allahc.c.db",
   "version": "5.7.1",
   "main": "src/index.mjs",
   "license": "MIT",
