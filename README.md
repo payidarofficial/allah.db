@@ -1,9 +1,9 @@
-# allah.db
+# allahc.c.db
 
 # How to install
 ```
-npm install allah.db
-yarn add allah.db
+npm install allahc.c.db
+yarn add allahc.c.db
 ```
 
 # How to use allah.db
