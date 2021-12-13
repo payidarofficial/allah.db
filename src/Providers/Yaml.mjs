@@ -1,9 +1,9 @@
 import { ikraFile, allah, set, get, unset } from "../Util/index.mjs";
 import { existsSync } from "fs";
 import { Çarpma } from "../Error/Error.mjs"
+import YAML from "yaml";
 
 const errors = {
-    "key": "Allah'ın verdiği sözcükler ile bir tane anahtar belirtmen lazım",
     "keyvalue": "Allah'ın verdiği sözcükler ile bir tane anahtar ve değer belirtmen lazım",
     "array": "Allah'ın verdiği array (liste)'i kullanmamamışsın",
     "not_found": "Allah'ın verisi yok",
@@ -11,45 +11,29 @@ const errors = {
 }
 
 //allah.db
-export class JsonDatabase {
-    constructor({ path = "./database.json" } = {}) {
+export class YamlDatabase {
+    constructor({ path = "./database.yaml" } = {}) {
         this.path = path;
 
-        if (!path.endsWith(".json")) path += ".json";
+        if (!path.endsWith(".yaml")) this.path += ".yaml";
 
         this.data = {}
 
-        if (!existsSync(path))
-            allah(this.data, this.path, true);
+        if (!existsSync(path)) allah(this.data, this.path);
 
-        this.data = JSON.parse(ikraFile(this.path));
+        this.data = YAML.parse(ikraFile(this.path));
 
+        if (!this.data) this.data = {};
     }
 
     //set
-    hicret(firavun, musa) {
-        if (!firavun) throw new Çarpma(errors["key"]);
-
-        set(this.data, firavun, musa);
-
-        return allah(this.data, this.path, true);
-    }
+    hicret(firavun, musa) { if (!firavun) throw new Çarpma(errors["key"]); set(this.data, firavun, musa); return allah(this.data, this.path); }
 
     //get
-    ikra(yaradan) {
-        if (!yaradan) throw new Çarpma(errors["key"]);
-
-        return get(this.data, yaradan);
-    }
+    ikra(yaradan) { if (!yaradan) throw new Çarpma(errors["key"]); return get(this.data, yaradan); }
 
     //delete
-    yak(muhammed) {
-        if (!muhammed) throw new Çarpma(errors["key"]);
-
-        unset(this.data, muhammed);
-
-        return allah(this.data, this.path, true);
-    }
+    yak(muhammed) { if (!muhammed) throw new Çarpma(errors["key"]); unset(this.data, muhammed); return allah(this.data, this.path); }
 
     //push
     musluman(haci, baba) {
@@ -65,7 +49,7 @@ export class JsonDatabase {
             throw new Çarpma(errors["array"]);
         }
 
-        return allah(this.data, this.path, true);
+        return allah(this.data, this.path);
     }
 
     //pull
@@ -81,7 +65,7 @@ export class JsonDatabase {
         }
 
 
-        return allah(this.data, this.path, true);
+        return allah(this.data, this.path);
     }
 
     //add
@@ -93,7 +77,7 @@ export class JsonDatabase {
 
         this.hicret(kerim, fatih_terim);
 
-        allah(this.data, this.path, true);
+        allah(this.data, this.path);
     }
 
     //substr
@@ -107,13 +91,9 @@ export class JsonDatabase {
 
         this.hicret(tek, fatih_portakal);
 
-        allah(this.data, this.path, true);
+        allah(this.data, this.path);
     }
 
     //all
-    put() {
-        return this.data;
-    }
+    put() { return this.data; }
 }
-
-//Hz. Muhammed = allah.db

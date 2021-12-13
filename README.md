@@ -6,17 +6,21 @@ npm install allahc.c.db
 yarn add allahc.c.db
 ```
 
-# How to use allah.db
+# How to use allahc.c.db
+
 ```js
-import { JsonDatabase } from "allah.db";
+import { JsonDatabase } from "allahc.c.db";
+// import { YamlDatabase } from "allahc.c.db";
 
 const db = new JsonDatabase({ path: "./allah.json" });
+// Or: const db = new YamlDatabase({ path: "./allah.yaml" });
 
 // set
 db.hicret("allah", "1");
 
 // get
-db.ikra("allah");
+const data = db.ikra("allah");
+console.log(data); // Output: "1";
 
 // delete
 db.yak("allah");

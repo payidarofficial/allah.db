@@ -8,7 +8,7 @@
   "type": "module",
   "dependencies": {
     "consola": "^2.15.3",
-    "lodash": "^4.17.21"
+    "yaml": "^1.10.2"
   },
   "repository": {
     "type": "git",
