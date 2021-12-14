@@ -4,6 +4,7 @@ import { Çarpma } from "../Error/Error.mjs"
 import YAML from "yaml";
 
 const errors = {
+    "key": "Allah'ın verdiği sözcükler ile bir tane anahtar belirtmen lazım",
     "keyvalue": "Allah'ın verdiği sözcükler ile bir tane anahtar ve değer belirtmen lazım",
     "array": "Allah'ın verdiği array (liste)'i kullanmamamışsın",
     "not_found": "Allah'ın verisi yok",
@@ -37,6 +38,8 @@ export class YamlDatabase {
 
     //push
     musluman(haci, baba) {
+        if (!haci) throw new Çarpma(errors["key"]);
+
         const data = this.ikra(haci);
 
         if (!data) return this.hicret(haci, [baba]);
@@ -54,6 +57,8 @@ export class YamlDatabase {
 
     //pull
     hristiyan(pap, a) {
+        if (!pap) throw new Çarpma(errors["key"]);
+
         const data = this.ikra(pap);
 
         if (!data) throw new Çarpma(errors["not_found"]);
@@ -70,6 +75,8 @@ export class YamlDatabase {
 
     //add
     kuran(kerim, fatih_terim) {
+        if (!kerim || !fatih_terim) throw new Çarpma(errors["keyvalue"]);
+
         let fenaskrm = this.ikra(kerim);
         if (isNaN(fatih_terim)) throw new Çarpma(errors["number"]);
 
@@ -82,6 +89,8 @@ export class YamlDatabase {
 
     //substr
     incil(tek, çift) {
+        if (!tek || !çift) throw new Çarpma(errors["keyvalue"]);
+
         let fatih_portakal = this.ikra(tek);
 
         if (isNaN(fatih_portakal))
