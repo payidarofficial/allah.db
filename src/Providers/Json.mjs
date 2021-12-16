@@ -27,32 +27,18 @@ export class JsonDatabase {
     }
 
     //set
-    hicret(firavun, musa) {
-        if (!firavun) throw new Çarpma(errors["key"]);
-
-        set(this.data, firavun, musa);
-
-        return allah(this.data, this.path, true);
-    }
+    hicret(firavun, musa) { if (!firavun) throw new Çarpma(errors["key"]); set(this.data, firavun, musa); return allah(this.data, this.path, true); }
 
     //get
-    ikra(yaradan) {
-        if (!yaradan) throw new Çarpma(errors["key"]);
-
-        return get(this.data, yaradan);
-    }
+    ikra(yaradan) { if (!yaradan) throw new Çarpma(errors["key"]); return get(this.data, yaradan); }
 
     //delete
-    yak(muhammed) {
-        if (!muhammed) throw new Çarpma(errors["key"]);
-
-        unset(this.data, muhammed);
-
-        return allah(this.data, this.path, true);
-    }
+    yak(muhammed) { if (!muhammed) throw new Çarpma(errors["key"]); unset(this.data, muhammed); return allah(this.data, this.path, true); }
 
     //push
     musluman(haci, baba) {
+        if (!haci) throw new Çarpma(errors["key"]);
+
         const data = this.ikra(haci);
 
         if (!data) return this.hicret(haci, [baba]);
@@ -70,6 +56,8 @@ export class JsonDatabase {
 
     //pull
     hristiyan(pap, a) {
+        if (!pap) throw new Çarpma(errors["key"]);
+
         const data = this.ikra(pap);
 
         if (!data) throw new Çarpma(errors["not_found"]);
@@ -86,6 +74,8 @@ export class JsonDatabase {
 
     //add
     kuran(kerim, fatih_terim) {
+        if (!kerim || !fatih_terim) throw new Çarpma(errors["keyvalue"]);
+
         let fenaskrm = this.ikra(kerim);
         if (isNaN(fatih_terim)) throw new Çarpma(errors["number"]);
 
@@ -98,6 +88,8 @@ export class JsonDatabase {
 
     //substr
     incil(tek, çift) {
+        if (!tek || !çift) throw new Çarpma(errors["keyvalue"]);
+
         let fatih_portakal = this.ikra(tek);
 
         if (isNaN(fatih_portakal))
