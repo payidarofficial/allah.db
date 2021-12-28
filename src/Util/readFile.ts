@@ -1,6 +1,5 @@
 import { readFileSync as ikraFileSync } from "fs";
-import YAML from "yaml";
 
-export const ikraFile = (path) => {
+export const ikraFile = (path: string): string => {
     return ikraFileSync(path, "utf-8");
 }

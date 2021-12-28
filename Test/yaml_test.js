@@ -1,13 +1,14 @@
-import { JsonDatabase } from "../Providers/Json.mjs";
+const { YamlDatabase } = require("../lib/index");
 
-const db = new JsonDatabase({ path: "./database.json" });
+const db = new YamlDatabase();
 
 // set
+
 db.hicret("allah", "1");
 console.log(db.data);
 
 // get
-db.ikra("allah");
+console.log(db.ikra("allah"));
 
 // delete
 db.yak("allah");

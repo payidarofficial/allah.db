@@ -1,12 +1,4 @@
-import { get } from "./get.mjs";
-
-/**
- * 
- * @param {Object} obj 
- * @param {string} path 
- * @param {*} value 
- */
-export function unset(obj, path) {
+export function unset(obj: Object, path: string | string[]): void {
     if (typeof path === 'string')
         path = path.split('.');
 
