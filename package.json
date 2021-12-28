@@ -1,11 +1,12 @@
 {
   "name": "allahc.c.db",
-  "description": "Allah'ın izni peygamberin kabri ile yaptığımız database.",
-  "version": "6.4.5",
-  "main": "./src/index.mjs",
-  "module": "./src/index.mjs",
+  "description": "Allah'ın izni peygamberin kavli ile yaptığımız database.",
+  "version": "6.4.7",
+  "main": ".\\lib\\index.js",
   "license": "MIT",
-  "type": "module",
+  "scripts": {
+    "build": "tsup"
+  },
   "dependencies": {
     "consola": "^2.15.3",
     "yaml": "^1.10.2"
@@ -13,5 +14,11 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Okeanos-0/allah.db.git"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.5",
+    "install": "^0.13.0",
+    "tsup": "^5.11.9",
+    "typescript": "^4.5.4"
   }
 }

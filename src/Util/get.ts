@@ -1,9 +1,6 @@
-/**
- * 
- * @param {Object} obj 
- * @param {string} path 
- */
-export const get = (obj, path) => {
+import { ValueType } from "../@types/types";
+
+export const get = (obj: Object, path: string): ValueType => {
     let p = path.split(".");
     let o = obj;
 

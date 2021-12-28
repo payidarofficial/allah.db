@@ -1,10 +1,4 @@
-/**
- * 
- * @param {Object} obj 
- * @param {string} path 
- * @param {*} value 
- */
-export const set = (obj, path, value) => {
+export const set = (obj: Object, path: string, value: unknown): void => {
     let p = path.split(".");
     let o = obj;
 
