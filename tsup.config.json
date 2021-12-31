@@ -1,7 +1,7 @@
 {
-    "entry": ["src"],
-    "outDir": "./lib",
-    "target": "es6",
+    "entry": ["./src/"],
     "clean": true,
-    "dts": true
+    "sourcemap": true,
+    "splitting": false,
+    "outDir": "./lib"
 }

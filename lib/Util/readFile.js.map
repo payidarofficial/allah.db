@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../src/Util/readFile.ts"],"sourcesContent":["import { readFileSync as ikraFileSync } from \"fs\";\r\n\r\nexport const ikraFile = (path: string): string => {\r\n    return ikraFileSync(path, \"utf-8\");\r\n}"],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA,gBAA6C;AAEtC,IAAM,WAAW,CAAC,SAAyB;AAC9C,SAAO,4BAAa,MAAM;AAAA;","names":[]}

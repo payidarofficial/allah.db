@@ -12,6 +12,10 @@ yarn add allahc.c.db
 import { JsonDatabase } from "allahc.c.db";
 // import { YamlDatabase } from "allahc.c.db";
 
+// Or:
+const { JsonDatabase } = require("allahc.c.db");
+const { YamlDatabase } = require("allahc.c.db");
+
 const db = new JsonDatabase({ path: "./allah.json" });
 // Or: const db = new YamlDatabase({ path: "./allah.yaml" });
 
