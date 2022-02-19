@@ -1,123 +1,119 @@
-import { ikraFile, allah, set, get, unset } from "../Util";
-import { existsSync } from "fs";
-import { Çarpma } from "../Error/Error"
-import { ValueType } from "../@types/types";
+import { readFile, write, set, get, unset } from '../Util';
+import { existsSync } from 'fs';
+import { DatabaseError } from '../Error/Error';
+import { ValueType } from '../@types/types';
 
 //allah.db
 export class JsonDatabase {
     private path: string;
     public data;
 
-    constructor({ path = "./database.json" } = {}) {
+    constructor({ path = './database.json' } = {}) {
         this.path = path;
 
-        if (!path.endsWith(".json")) path += ".json";
+        if (!path.endsWith('.json')) path += '.json';
 
-        this.data = {}
+        this.data = {};
 
-        if (!existsSync(path))
-            allah(this.data, this.path, true);
+        if (!existsSync(path)) write(this.data, this.path, true);
 
-        this.data = JSON.parse(ikraFile(this.path));
-
+        this.data = JSON.parse(readFile(this.path));
     }
 
     //set
-    hicret(firavun: string, musa: ValueType) {
-        if (!firavun) throw new Çarpma("key");
-        set(this.data, firavun, musa);
-        return allah(this.data, this.path, true);
+    set(key: string, value: ValueType) {
+        if (!key) throw new DatabaseError('key');
+        set(this.data, key, value);
+        return write(this.data, this.path, true);
     }
 
     //get
-    ikra(yaradan: string) {
-        if (!yaradan) throw new Çarpma("key");
-        return get(this.data, yaradan);
+    get(key: string) {
+        if (!key) throw new DatabaseError('key');
+        return get(this.data, key);
     }
 
     //delete
-    yak(muhammed: string) {
-        if (!muhammed) throw new Çarpma("key");
-        unset(this.data, muhammed);
-        return allah(this.data, this.path, true);
+    delete(key: string) {
+        if (!key) throw new DatabaseError('key');
+        unset(this.data, key);
+        return write(this.data, this.path, true);
     }
 
     //push
-    musluman(haci: string, baba: ValueType) {
-        if (!haci) throw new Çarpma("key");
+    push(key: string, value: ValueType) {
+        if (!key) throw new DatabaseError('key');
 
-        const data = this.ikra(haci);
+        const data = this.get(key);
 
-        if (!data) return this.hicret(haci, [baba]);
+        if (!data) return this.set(key, [value]);
 
         if (Array.isArray(data)) {
             let arr = data;
-            arr.push(baba);
-            this.hicret(haci, arr);
+            arr.push(value);
+            this.set(key, arr);
         } else {
-            throw new Çarpma("array");
+            throw new DatabaseError('array');
         }
 
-        return allah(this.data, this.path, true);
+        return write(this.data, this.path, true);
     }
 
     //pull
-    hristiyan(pap: string, a: ValueType) {
-        if (!pap) throw new Çarpma("key");
+    pull(key: string, value: ValueType) {
+        if (!key) throw new DatabaseError('key');
 
-        const data = this.ikra(pap);
+        const data = this.get(key);
 
-        if (!data) throw new Çarpma("not_found");
+        if (!data) throw new DatabaseError('not_found');
 
         if (Array.isArray(data)) {
-            this.hicret(pap, data.filter((e) => e !== a));
+            this.set(
+                key,
+                data.filter((e) => e !== value),
+            );
         } else {
-            throw new Çarpma("array");
+            throw new DatabaseError('array');
         }
 
-
-        return allah(this.data, this.path, true);
+        return write(this.data, this.path, true);
     }
 
     //add
-    kuran(kerim: string, fatih_terim: number): void {
-        if (!kerim || !fatih_terim) throw new Çarpma("key-value");
+    add(key: string, num: number): void {
+        if (!key || !num) throw new DatabaseError('key-value');
 
-        let fenaskrm = this.ikra(kerim);
-        if (!Number(fenaskrm)) throw new Çarpma("number");
-        if (isNaN(fatih_terim)) throw new Çarpma("number");
+        let val = this.get(key);
+        if (!Number(val)) throw new DatabaseError('number');
+        if (isNaN(num)) throw new DatabaseError('number');
 
-        fenaskrm = Number(fenaskrm);
+        val = Number(val);
 
-        fenaskrm += fatih_terim;
+        val += num;
 
-        this.hicret(kerim, fatih_terim);
+        this.set(key, num);
 
-        allah(this.data, this.path, true);
+        write(this.data, this.path, true);
     }
 
     //substr
-    incil(tek: string, çift: number): void {
-        if (!tek || !çift) throw new Çarpma("key-value");
+    substr(key: string, num: number): void {
+        if (!key || !num) throw new DatabaseError('key-value');
 
-        let fatih_portakal = this.ikra(tek);
+        let val = this.get(key);
 
-        if (!Number(fatih_portakal))
-            throw new Çarpma("number");
+        if (!Number(val)) throw new DatabaseError('number');
 
-        fatih_portakal = Number(fatih_portakal);
+        val = Number(val);
 
-        fatih_portakal -= çift;
+        val -= num;
 
-        this.hicret(tek, fatih_portakal);
+        this.set(key, val);
 
-        allah(this.data, this.path, true);
+        write(this.data, this.path, true);
     }
 
-    //all
-    put() {
+    all() {
         return this.data;
     }
 }
-
-//Hz. Muhammed = allah.db

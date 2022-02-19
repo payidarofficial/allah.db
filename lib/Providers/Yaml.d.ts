@@ -1,19 +1,17 @@
-import { ValueType } from '../@types/types.d';
-
-declare class YamlDatabase {
+import { ValueType } from '../@types/types';
+export declare class YamlDatabase {
     private path;
     data: any;
     constructor({ path }?: {
         path?: string;
     });
-    hicret(firavun: string, musa: ValueType): void;
-    ikra(yaradan: string): ValueType;
-    yak(muhammed: string): void;
-    musluman(haci: string, baba: ValueType): void;
-    hristiyan(pap: string, a: ValueType): void;
-    kuran(kerim: string, fatih_terim: number): void;
-    incil(tek: string, çift: number): void;
-    put(): any;
+    set(key: string, value: ValueType): void;
+    get(key: string): ValueType;
+    delete(key: string): void;
+    push(key: string, value: ValueType): void;
+    pull(key: string, value: ValueType): void;
+    add(key: string, num: number): void;
+    substr(key: string, num: number): void;
+    all(): any;
 }
-
-export { YamlDatabase };
+//# sourceMappingURL=Yaml.d.ts.map

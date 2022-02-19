@@ -1,7 +1,0 @@
-{
-    "entry": ["src"],
-    "outDir": "./lib",
-    "target": "es6",
-    "clean": true,
-    "dts": true
-}

@@ -1,5 +1,4 @@
-declare class Çarpma extends Error {
+export declare class DatabaseError extends Error {
     constructor(id: any);
 }
-
-export { Çarpma };
+//# sourceMappingURL=Error.d.ts.map

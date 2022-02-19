@@ -1,3 +1,2 @@
-declare const allah: (data: Object, path: string, is_json: boolean) => void;
-
-export { allah };
+export declare const write: (data: Object, path: string, is_json: boolean) => void;
+//# sourceMappingURL=writeFile.d.ts.map

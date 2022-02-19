@@ -1,37 +1,35 @@
-const { YamlDatabase } = require("../lib/index");
+const { YamlDatabase } = require('../lib/index');
 
-const db = new YamlDatabase();
+const db = new YamlDatabase({ path: './database.json.yaml' });
 
 // set
-
-db.hicret("allah", "1");
+db.set('allah', '1');
 console.log(db.data);
 
 // get
-console.log(db.ikra("allah"));
+db.get('allah');
 
 // delete
-db.yak("allah");
+db.delete('allah');
 console.log(db.data);
 
 // push
-db.musluman("allah_2", 1);
+db.push('allah_2', 1);
 console.log(db.data);
 
 // pull
-db.hristiyan("allah_2", 1);
+db.pull('allah_2', 1);
 console.log(db.data);
 
-db.hicret("allah", 1);
+db.set('allah', 1);
 console.log(db.data);
 
 // add
-db.kuran("allah", 2);
+db.add('allah', 2);
 console.log(db.data);
 
 // substr
-db.incil("allah", 3);
+db.substr('allah', 3);
 console.log(db.data);
 
-
-console.log(db.put());
+console.log(db.all());

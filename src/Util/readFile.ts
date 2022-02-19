@@ -1,5 +1,5 @@
-import { readFileSync as ikraFileSync } from "fs";
+import { readFileSync } from "fs";
 
-export const ikraFile = (path: string): string => {
-    return ikraFileSync(path, "utf-8");
+export const readFile = (path: string): string => {
+    return readFileSync(path, "utf-8");
 }

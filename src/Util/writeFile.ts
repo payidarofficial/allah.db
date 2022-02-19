@@ -1,9 +1,8 @@
-import YAML from "yaml";
+import YAML from 'yaml';
 
-import { writeFileSync as allahSync } from "fs";
+import { writeFileSync } from 'fs';
 
-export const allah = (data: Object, path: string, is_json: boolean): void => {
-    if (is_json)
-        return allahSync(path, JSON.stringify(data, null, 4));
-    return allahSync(path, YAML.stringify(data));
-}
+export const write = (data: Object, path: string, is_json: boolean): void => {
+    if (is_json) return writeFileSync(path, JSON.stringify(data, null, 4));
+    return writeFileSync(path, YAML.stringify(data));
+};
